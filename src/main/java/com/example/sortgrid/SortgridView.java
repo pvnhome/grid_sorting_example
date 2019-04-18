@@ -1,6 +1,8 @@
 package com.example.sortgrid;
 
-import org.apache.log4j.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Label;
@@ -15,19 +17,23 @@ import com.vaadin.flow.router.Route;
 @Route("")
 @BodySize(height = "100vh", width = "100vw")
 @Viewport("width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes")
+@SuppressWarnings("serial")
 public class SortgridView extends VerticalLayout {
-   private Logger log = Logger.getLogger(getClass());
+   Logger log = LoggerFactory.getLogger(SortgridView.class.getName());
 
-    public SortgridView() {
-        setClassName("app-view");
+   public SortgridView() {
+      log.info("SortgridView");
 
-        Label hello = new Label("Hello Gradle app!");
-        add(hello);
+      setClassName("app-view");
 
-        Button button = new Button("Click me", event -> {
-            hello.setText("Clicked!");
-            hello.setClassName("clicked");
-        });
-        add(button);
-    }
+      Label hello = new Label("Hello Gradle app!");
+      add(hello);
+
+      Button button = new Button("Click me", event -> {
+         log.info("click");
+         hello.setText("Clicked!");
+         hello.setClassName("clicked");
+      });
+      add(button);
+   }
 }
