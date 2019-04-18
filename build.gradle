@@ -1,0 +1,16 @@
+plugins {
+    id 'war'
+    id 'eclipse'
+    id 'org.gretty' version '2.3.1'
+    id 'com.devsoap.vaadin-flow' version '1.1.1'
+}
+
+vaadin {
+   version '13.0.4'
+}
+
+vaadin.autoconfigure()
+
+dependencies {
+   providedCompile group: 'log4j', name: 'log4j', version: '1.2.17'
+}
