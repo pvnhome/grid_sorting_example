@@ -80,7 +80,7 @@ git checkout provider_sort
 gradlew appRun
 ```
 
-Code:
+Demonstrated code:
 
 ```java
 public class MyView extends VerticalLayout{
