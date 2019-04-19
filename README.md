@@ -55,3 +55,23 @@ sizeInBackEnd: 200, sort=[], filter=absent
 fetchFromBackEnd: offset=0, limit=50, sort=[], filter=absent
 fetchFromBackEnd: offset=50, limit=100, sort=[], filter=absent
 ```
+
+## Sorting using provider
+
+
+```
+git checkout provider_sort
+gradlew appRun
+```
+
+Log:
+
+
+```
+SortgridView
+sizeInBackEnd: 200, sort=[id (D)], filter=absent
+fetchFromBackEnd: offset=0, limit=50, sort=[id (D)], filter=absent
+fetchFromBackEnd: offset=50, limit=100, sort=[id (D)], filter=absent
+```
+
+Sorting working but not visible in the grid.

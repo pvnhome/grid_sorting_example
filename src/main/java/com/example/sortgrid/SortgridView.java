@@ -13,6 +13,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.page.BodySize;
 import com.vaadin.flow.component.page.Viewport;
 import com.vaadin.flow.data.provider.ConfigurableFilterDataProvider;
+import com.vaadin.flow.data.provider.QuerySortOrder;
 import com.vaadin.flow.router.Route;
 
 /**
@@ -74,6 +75,8 @@ public class SortgridView extends VerticalLayout {
       grid.setMultiSort(true);
 
       dataProvider = new SortDataProvider();
+      dataProvider.setSortOrders(QuerySortOrder.desc("id").build());
+
       providerWraper = dataProvider.withConfigurableFilter();
       grid.setDataProvider(providerWraper);
 
