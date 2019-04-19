@@ -21,7 +21,7 @@ import com.vaadin.flow.data.provider.QuerySortOrder;
 @SuppressWarnings("serial")
 public class SortDataProvider extends AbstractBackEndDataProvider<SortDTO, SortFilterDTO> {
    private static final int COUNT = 200;
-   private static final long DELAY = 1000L;
+   private static final long DELAY = 1000;
 
    private Logger log = LoggerFactory.getLogger(SortDataProvider.class.getName());
 
@@ -50,7 +50,9 @@ public class SortDataProvider extends AbstractBackEndDataProvider<SortDTO, SortF
       if (DELAY > 0L) {
          try {
             log.debug("waiting {} ms", DELAY);
-            Thread.sleep(DELAY);
+            synchronized (this) {
+               wait(DELAY);
+            }
          } catch (InterruptedException e) {
             log.error("fetchFromBackEnd", e);
          }
@@ -74,7 +76,9 @@ public class SortDataProvider extends AbstractBackEndDataProvider<SortDTO, SortF
       if (DELAY > 0L) {
          try {
             log.info("waiting: {} ms", DELAY);
-            Thread.sleep(DELAY);
+            synchronized (this) {
+               wait(DELAY);
+            }
          } catch (InterruptedException e) {
             log.error("sizeInBackEnd", e);
          }
