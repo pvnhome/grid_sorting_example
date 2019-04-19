@@ -73,8 +73,6 @@ public class SortgridView extends VerticalLayout {
       colC = grid.addColumn(SortDTO::getC).setKey("c").setHeader("C").setSortable(true).setWidth("80px");
       grid.setMultiSort(true);
 
-      grid.sort(GridSortOrder.desc(colId).build());
-
       dataProvider = new SortDataProvider();
       providerWraper = dataProvider.withConfigurableFilter();
       grid.setDataProvider(providerWraper);
