@@ -75,3 +75,13 @@ fetchFromBackEnd: offset=50, limit=100, sort=[id (D)], filter=absent
 ```
 
 Sorting working but not visible in the grid.
+
+# Without filtering and delay
+
+Variant without filtering and delay:
+
+
+```
+git checkout no_filter_and_delay
+gradlew appRun
+```
