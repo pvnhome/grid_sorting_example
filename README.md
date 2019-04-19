@@ -2,6 +2,22 @@
 
 ## Sorting and filtering
 
+Demonstrated code:
+
+```java
+public class MyView extends VerticalLayout{
+    public MyView(){
+        Grid grid = /* create grid */
+        grid.grid.setDataProvider(provider);
+        grid.sort(/*List containing a sort order */); // not working as expected
+
+        Button btn = new Button("Sort", event -> {
+           grid.sort(/*List containing a sort order */); // working as expected
+        });
+    }
+}
+```
+
 Clone and run:
 
 ```
@@ -64,6 +80,20 @@ git checkout provider_sort
 gradlew appRun
 ```
 
+Code:
+
+```java
+public class MyView extends VerticalLayout{
+    public MyView(){
+        Grid grid = /* create grid */
+        grid.grid.setDataProvider(provider);
+
+        // working but not visible in the grid
+        provider.setSortOrders(/*List containing a sort order */);
+    }
+}
+```
+
 Log:
 
 
@@ -76,7 +106,7 @@ fetchFromBackEnd: offset=50, limit=100, sort=[id (D)], filter=absent
 
 Sorting working but not visible in the grid.
 
-# Without filtering and delay
+## Without filtering and delay
 
 Variant without filtering and delay:
 
