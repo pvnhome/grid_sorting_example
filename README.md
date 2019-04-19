@@ -42,7 +42,7 @@ fetchFromBackEnd: offset=0, limit=100, sort=[c (A),id (A)], filter=[need to filt
 Variant without initial sorting:
 
 ```
-git branch without_initial_sort
+git checkout without_initial_sort
 gradlew appRun
 ```
 
