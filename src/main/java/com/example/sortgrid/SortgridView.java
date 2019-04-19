@@ -12,8 +12,6 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.page.BodySize;
 import com.vaadin.flow.component.page.Viewport;
-import com.vaadin.flow.data.provider.ConfigurableFilterDataProvider;
-import com.vaadin.flow.data.provider.QuerySortOrder;
 import com.vaadin.flow.router.Route;
 
 /**
@@ -27,7 +25,6 @@ public class SortgridView extends VerticalLayout {
    private Logger log = LoggerFactory.getLogger(SortgridView.class.getName());
 
    private SortDataProvider dataProvider;
-   private ConfigurableFilterDataProvider<SortDTO, Void, SortFilterDTO> providerWraper;
 
    private Grid<SortDTO> grid;
 
@@ -53,18 +50,6 @@ public class SortgridView extends VerticalLayout {
       });
       tools.add(btnSort2);
 
-      Button btnFilterOn = new Button("Filter On", event -> {
-         log.info("button: filter on");
-         providerWraper.setFilter(new SortFilterDTO(true));
-      });
-      tools.add(btnFilterOn);
-
-      Button btnFilterOff = new Button("Filter Off", event -> {
-         log.info("button: filter off");
-         providerWraper.setFilter(new SortFilterDTO(false));
-      });
-      tools.add(btnFilterOff);
-
       add(tools);
 
       grid = new Grid<>();
@@ -74,11 +59,10 @@ public class SortgridView extends VerticalLayout {
       colC = grid.addColumn(SortDTO::getC).setKey("c").setHeader("C").setSortable(true).setWidth("80px");
       grid.setMultiSort(true);
 
-      dataProvider = new SortDataProvider();
-      dataProvider.setSortOrders(QuerySortOrder.desc("id").build());
+      grid.sort(GridSortOrder.desc(colId).build());
 
-      providerWraper = dataProvider.withConfigurableFilter();
-      grid.setDataProvider(providerWraper);
+      dataProvider = new SortDataProvider();
+      grid.setDataProvider(dataProvider);
 
       grid.setSizeFull();
 
