@@ -6,7 +6,7 @@ plugins {
 }
 
 vaadin {
-   version '13.0.4'
+   version '13.0.6'
 }
 
 vaadin.autoconfigure()
